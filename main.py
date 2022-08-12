@@ -62,7 +62,7 @@ app.layout = html.Div(children=[
     html.Br(),
 
     html.P(f"Lowest gas price in SSM: {mingas['Price '][0]} cents/L",style={'color': 'black', "font-family":'sans-serif','font-size': '25px','textAlign': 'center'}),
-#"font-"
+
   
     html.Br(),
     html.Br(),
