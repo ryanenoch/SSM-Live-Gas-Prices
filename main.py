@@ -10,15 +10,13 @@ app = dash.Dash('app')
 import pandas as pd
 pd.options.plotting.backend = "plotly"
 
-#gas() #calls the scraping fn
+gas() #calls the scraping fn
 
 df = pd.read_csv("ssmgas.csv", sep=",")
 df.drop(df.tail(1).index,inplace=True) # drop last row
 df['Gas Station '] = df['Station '] + df['Address ']
 df = df.astype({'Price ': float}) #convert Price column to float
 print(df)
-#print(df.dtypes)
-#print()
 
 mingas = df[df['Price ']==df['Price '].min()] #station(s) with cheapest gas is stored here
 mingas.reset_index(inplace = True, drop = True)
@@ -38,7 +36,7 @@ maxgas.reset_index(inplace = True, drop = True)
 
 #setting up the bar chart
 fig = px.bar(df, x="Gas Station ", y="Price ",labels={'Gas Station ':'Gas Station','Price ':'Price (cents/L)'})
-#fig = px.bar(df, x="Station ", y="Price ",labels={'Price ':'Price (cents)'})
+
 
 #fig['layout'].update(height=600, width=1300, title='Gas Prices in SSM')
 fig['layout'].update(title='Gas Prices in SSM')
